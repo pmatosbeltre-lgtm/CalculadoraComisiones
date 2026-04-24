@@ -1,0 +1,89 @@
+﻿@page
+@model CalculadoraComisiones.Pages.IndexModel
+@{
+    ViewData["Title"] = "Calculadora de Comisiones";
+}
+
+<div class="container py-4">
+
+    <h1 class="hero-title">Calcula tu comisión.</h1>
+
+    <p class="hero-subtitle">
+        Ingresa tus ventas y descubre cuánto ganarás este mes.
+    </p>
+
+    <div class="main-card row g-0">
+
+        <!-- PANEL IZQUIERDO -->
+        <div class="col-lg-6 form-panel">
+
+            <h3>Datos de venta</h3>
+            <p>Completa la información para calcular tu comisión.</p>
+
+            <form method="post">
+
+                <div class="mb-4">
+                    <label class="form-label">País</label>
+                    <select asp-for="Pais" class="form-control">
+                        <option value="">Selecciona un país</option>
+                        <option>India</option>
+                        <option>US</option>
+                        <option>UK</option>
+                        <option>Germany</option>
+                        <option>Brazil</option>
+                        <option>Mexico</option>
+                        <option>Republica Dominicana</option>
+                    </select>
+                    <span asp-validation-for="Pais" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">Monto de venta</label>
+                    <input asp-for="Ventas" class="form-control" />
+                    <span asp-validation-for="Ventas" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">Descuento aplicado</label>
+                    <input asp-for="Descuentos" class="form-control" />
+                    <span asp-validation-for="Descuentos" class="text-danger"></span>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">
+                        Calcular Comisión
+                    </button>
+                </div>
+
+                <div class="secure-note">
+                    Tu información está segura con nosotros.
+                </div>
+
+            </form>
+
+        </div>
+
+        <!-- PANEL DERECHO -->
+        <div class="col-lg-6 result-panel">
+
+            <div class="result-content">
+
+                <div class="result-label">
+                    Resultado
+                </div>
+
+                <div class="result-value">
+                    @Model.Resultado.ToString("C")
+                </div>
+
+                <div class="result-badge">
+                    Comisión calculada
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
